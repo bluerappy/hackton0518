@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<link async href="http://fonts.googleapis.com/css?family=Acme" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css" />
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="normalize.css">
+	<link rel="stylesheet" href="styles.css">
+	<title class="titre">Super Wild Fighters</title>
+</head>
+
+<script>
+	function enableButton2() {
+		document.getElementById("button2").disabled = false;
+		document.getElementById("button22").disabled = false;
+		document.getElementById("button23").disabled = false;
+		document.getElementById("button1").disabled = true;
+		document.getElementById("button11").disabled = true;
+		document.getElementById("button12").disabled = true;
+	}
+
+	function enableButton1() {
+		document.getElementById("button1").disabled = false;
+		document.getElementById("button11").disabled = false;
+		document.getElementById("button12").disabled = false;
+		document.getElementById("button2").disabled = true;
+		document.getElementById("button22").disabled = true;
+		document.getElementById("button23").disabled = true;
+	}
+</script>
+
+<script>
+	function disableRoll(){
+			document.getElementById("rerollP1").disabled = true;
+			document.getElementById("rerollP2").disabled = true;
+	}
+</script>
+
+<body id="random" onload="randombg()">
+	<header>
+		<div>
+			<button onclick="randombg()" class="button btnBg" type="button" id="my-button" name="button" value="arene">Changer l'arène</button>
+			<h1>SUPER WILD FIGHTERS Z</h1>
+		</div>
+	</header>
+	<div class="container text-center">
+		<div class="row">
+			<div class="col-xs-12 col-md-6 col-lg-4">
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+					<div class="flipper">
+						<div class="front">
+							<article>
+								<img id="imgJ1" src="http://via.placeholder.com/320x480" class="img-fluid player1" alt="">
+						</div>
+						<div class="back">
+							<img id="imgJ1Back" src="http://via.placeholder.com/320x480" class="img-fluid player1" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="lifebar1">
+					<progress id="health" value="100" max="100"></progress>
+				</div>
+				<header>
+					<h3 id="J1Name"></h3>
+				</header>
+
+				</article>
+			</div>
+
+
+			<div class=" versus col-xs-12 col-md-6 col-lg-4">
+				<article>
+					<img src="img/versus.png" class="img-fluid" style=width:80% alt="">
+				</article>
+			</div>
+
+
+			<div class="col-xs-12 col-md-6 col-lg-4">
+
+				<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+					<div class="flipper">
+						<div class="front">
+							<article>
+								<img id="imgJ2" src="http://via.placeholder.com/320x480" class="img-fluid player2" alt="">
+						</div>
+						<div class="back">
+							<img id="imgJ2Back" src="http://via.placeholder.com/320x480" class="img-fluid player2" alt="">
+						</div>
+					</div>
+				</div>
+				<div class="lifebar2">
+					<progress id="health2" value="100" max="100"></progress>
+				</div>
+				<header>
+					<h3 id="J2Name"></h3>
+				</header>
+				</article>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-6 col-md-6 col-lg-4">
+				<div class="">
+					<input id="button1" onclick="disableRoll(); combattant1.intPsy(combattant2) ; enableButton2() ; combattant1.lifeBar1(combattant2)" type="button" value="Psy" name="button">
+					<input id="button11" onclick="disableRoll();combattant1.strCoupDePoing(combattant2) ; enableButton2() ; combattant1.lifeBar1(combattant2)" type="button" value="Coup de Poing" name="button">
+					<input id="button12" onclick="disableRoll();combattant1.spForcespeed(combattant2) ; enableButton2() ; combattant1.lifeBar1(combattant2)" type="button" value="Force Speed" name="button">
+				</div>
+			</div>
+
+			<div class="col-xs-6 col-md-6 col-lg-2">
+				<div class="text-center">
+					<button type="button" id="rerollP1" onclick="createPerso1(), disabled=true" name="button">Reroll J1</button>
+				</div>
+			</div>
+
+			<div class="col-xs-6 col-md-6 col-lg-2">
+				<div class="text-center">
+					<button type="button" id="rerollP2" name="button" onclick="createPerso2(), disabled=true">Reroll J2</button>
+				</div>
+			</div>
+
+
+			<div class="col-xs-6 col-md-6 col-lg-4">
+				<div class="">
+					<input id="button2" onclick="disableRoll();combattant2.intPsy(combattant1) ; enableButton1() ; combattant2.lifeBar2(combattant1)" type="button" value="Psy" name="button">
+					<input id="button22" onclick="disableRoll();combattant2.strCoupDePoing(combattant1) ; enableButton1() ; combattant2.lifeBar2(combattant1)" type="button" value="Coup de Poing" name="button">
+					<input id="button23" onclick="disableRoll();combattant2.spForcespeed(combattant1) ; enableButton1() ; combattant2.lifeBar2(combattant1)" type="button" value="Force Speed" name="button">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="dialogue-box">
+		<div class="tdialogue-box-text">
+			<div class="dial text-center">
+					<p class = "txt" id="textBox">Déroulement du combat !</p>
+			</div>
+		</div>
+		<div class="triangle-with-shadow"></div>
+	</div>
+
+
+	<audio autoplay loop>
+	      <source src="music.mp3" type="audio/mpeg">
+	</audio>
+</body>
+<script type="text/javascript" src="background.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
